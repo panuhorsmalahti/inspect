@@ -1,0 +1,255 @@
+// Layout and motion only: colours, borders and type come from element-components $props.
+
+.page {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px 0;
+}
+
+.search {
+  max-width: 420px;
+}
+
+.count {
+  flex: none;
+}
+
+.message {
+  padding: 16px;
+}
+
+.grid {
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-rows: 112px;
+  gap: 12px;
+  align-content: start;
+  transition: opacity 300ms ease;
+}
+
+// The boxes step back while one of them fills the page.
+.gridReceded {
+  opacity: 0.25;
+}
+
+// The whole box is the button that expands the pod.
+.tile {
+  appearance: none;
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+}
+
+.magnifier {
+  opacity: 0.45;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+
+  .tile:hover &,
+  .tile:focus-visible & {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+// The box an expanded pod grew out of, kept in place for it to shrink back into.
+.tileLifted {
+  visibility: hidden;
+}
+
+.header {
+  min-width: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// A square just big enough for its icon, which sits in its middle.
+.iconButton {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+.expanded {
+  position: absolute;
+  inset: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+  outline: none;
+}
+
+// What an expanded pod shows once it has grown: its containers, and the processes of one.
+.details {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: appear 200ms ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.stateDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.processes {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contextButton {
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tableScroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.processTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+
+  th,
+  td {
+    padding: 4px 8px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    // Above the buttons of the rows scrolling under it.
+    z-index: 1;
+    font-weight: bold;
+    // A collapsed border stays with the table rather than the sticking header: a shadow moves with it.
+    border-bottom: 0;
+    box-shadow: inset 0 -1px 0 color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  .number {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  // The tree: each level further right by a toggle and its gap, so that a level's toggles sit under
+  // what the level above says.
+  .depth0 {
+    padding-left: 8px;
+  }
+
+  .depth1 {
+    padding-left: 32px;
+  }
+
+  .depth2 {
+    padding-left: 56px;
+  }
+
+  .toggleSlot {
+    flex: none;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+  }
+
+  .treeToggle {
+    width: 20px;
+    height: 20px;
+  }
+
+  // Free to wrap, a command being as long as it likes.
+  .treeLabel {
+    min-width: 0;
+  }
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.command {
+  word-break: break-all;
+}
+
+.errorText {
+  white-space: pre-wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid,
+  .tile,
+  .magnifier {
+    transition: none;
+  }
+
+  .details {
+    animation: none;
+  }
+}
