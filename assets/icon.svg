@@ -1,5 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- A placeholder: replace it with an icon of the extension's own, square, an SVG. -->
-  <rect width="64" height="64" rx="14" fill="#3d90ce"/>
-  <path fill="#ffffff" d="M26 14a6 6 0 0 1 12 0v4h8a4 4 0 0 1 4 4v8h-4a6 6 0 0 0 0 12h4v8a4 4 0 0 1-4 4h-8v-4a6 6 0 0 0-12 0v4h-8a4 4 0 0 1-4-4v-8h4a6 6 0 0 0 0-12h-4v-8a4 4 0 0 1 4-4h8z"/>
+  <!-- A magnifying glass over a pod, drawn as a cube. -->
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b6cf0"/>
+      <stop offset="1" stop-color="#3437b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#background)"/>
+  <g fill="#ffffff">
+    <path d="M27 18.5 34.4 22.75 27 27 19.6 22.75z"/>
+    <path fill-opacity="0.8" d="M19.6 22.75 27 27v8.5l-7.4-4.25z"/>
+    <path fill-opacity="0.6" d="M34.4 22.75 27 27v8.5l7.4-4.25z"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round">
+    <circle cx="27" cy="27" r="14.5" stroke-width="5"/>
+    <path d="M38.5 38.5 50 50" stroke-width="7"/>
+  </g>
 </svg>

@@ -1,11 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
-  <!-- A placeholder: replace it with a banner of the extension's own, twice as wide as it is tall. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <!-- The pods of a cluster as boxes, one of them expanded to its containers and their processes. -->
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3d90ce"/>
-      <stop offset="1" stop-color="#1e3a5f"/>
+      <stop offset="0" stop-color="#151a36"/>
+      <stop offset="1" stop-color="#262f6e"/>
     </linearGradient>
+    <linearGradient id="iconBackground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b6cf0"/>
+      <stop offset="1" stop-color="#3437b8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5b6cf0" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#5b6cf0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#05071a" flood-opacity="0.6"/>
+    </filter>
+    <g id="tile">
+      <rect width="150" height="80" rx="10" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.2"/>
+      <rect x="16" y="22" width="88" height="10" rx="5" fill="#ffffff" fill-opacity="0.55"/>
+      <rect x="16" y="44" width="56" height="8" rx="4" fill="#ffffff" fill-opacity="0.3"/>
+      <circle cx="132" cy="27" r="5" fill="#22c55e"/>
+    </g>
   </defs>
+
   <rect width="1200" height="600" fill="url(#background)"/>
-  <text x="600" y="320" text-anchor="middle" font-family="sans-serif" font-size="72" fill="#ffffff">inspect</text>
+  <ellipse cx="870" cy="300" rx="380" ry="260" fill="url(#glow)"/>
+
+  <!-- The icon, the name and what it shows. -->
+  <g transform="translate(80 178) scale(1.5)">
+    <rect width="64" height="64" rx="14" fill="url(#iconBackground)"/>
+    <g fill="#ffffff">
+      <path d="M27 18.5 34.4 22.75 27 27 19.6 22.75z"/>
+      <path fill-opacity="0.8" d="M19.6 22.75 27 27v8.5l-7.4-4.25z"/>
+      <path fill-opacity="0.6" d="M34.4 22.75 27 27v8.5l7.4-4.25z"/>
+    </g>
+    <g fill="none" stroke="#ffffff" stroke-linecap="round">
+      <circle cx="27" cy="27" r="14.5" stroke-width="5"/>
+      <path d="M38.5 38.5 50 50" stroke-width="7"/>
+    </g>
+  </g>
+  <text x="76" y="360" font-size="68" font-weight="700" fill="#ffffff">Inspect Pods</text>
+  <text x="80" y="410" font-size="28" fill="#aab4ec">Pods → containers → processes</text>
+
+  <!-- Every pod of the cluster, stepped back behind the expanded one. -->
+  <g opacity="0.45">
+    <use href="#tile" x="620" y="116"/>
+    <use href="#tile" x="786" y="116"/>
+    <use href="#tile" x="952" y="116"/>
+    <use href="#tile" x="620" y="212"/>
+    <use href="#tile" x="786" y="212"/>
+    <use href="#tile" x="952" y="212"/>
+    <use href="#tile" x="620" y="308"/>
+    <use href="#tile" x="786" y="308"/>
+    <use href="#tile" x="952" y="308"/>
+    <use href="#tile" x="620" y="404"/>
+    <use href="#tile" x="786" y="404"/>
+    <use href="#tile" x="952" y="404"/>
+  </g>
+
+  <!-- The expanded pod: a tab per container, and the processes of one. -->
+  <g filter="url(#shadow)">
+    <rect x="652" y="140" width="436" height="320" rx="16" fill="#1d2547" stroke="#ffffff" stroke-opacity="0.22"/>
+  </g>
+  <text x="676" y="176" font-size="18" font-weight="600" fill="#ffffff">web-7d9f5c-x2k4q</text>
+  <text x="676" y="198" font-size="13" fill="#ffffff" fill-opacity="0.55">default</text>
+  <path d="M1052 162l12 12m0-12-12 12" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round"/>
+
+  <g font-size="14" fill="#ffffff">
+    <circle cx="680" cy="226" r="4" fill="#22c55e"/>
+    <text x="690" y="231">app</text>
+    <circle cx="742" cy="226" r="4" fill="#22c55e"/>
+    <text x="752" y="231" fill-opacity="0.6">envoy</text>
+    <circle cx="818" cy="226" r="4" fill="#eab308"/>
+    <text x="828" y="231" fill-opacity="0.6">log-shipper</text>
+  </g>
+  <rect x="676" y="243" width="388" height="1" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="676" y="241" width="44" height="3" rx="1.5" fill="#7c8cff"/>
+
+  <g font-size="11" letter-spacing="1" fill="#ffffff" fill-opacity="0.5">
+    <text x="680" y="268">PID</text>
+    <text x="724" y="268">COMMAND</text>
+    <text x="984" y="268" text-anchor="end">CPU</text>
+    <text x="1056" y="268" text-anchor="end">MEM</text>
+  </g>
+
+  <g fill-opacity="0.24">
+    <rect x="668" y="280" width="404" height="28" rx="6" fill="#ef4444"/>
+    <rect x="668" y="314" width="404" height="28" rx="6" fill="#f97316"/>
+    <rect x="668" y="348" width="404" height="28" rx="6" fill="#eab308"/>
+    <rect x="668" y="382" width="404" height="28" rx="6" fill="#84cc16"/>
+    <rect x="668" y="416" width="404" height="28" rx="6" fill="#22c55e"/>
+  </g>
+  <g font-size="13" fill="#ffffff" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+    <text x="680" y="299">1</text>
+    <text x="724" y="299">node server.js</text>
+    <text x="984" y="299" text-anchor="end">64%</text>
+    <text x="1056" y="299" text-anchor="end">71%</text>
+
+    <text x="680" y="333">27</text>
+    <text x="724" y="333">node worker.js</text>
+    <text x="984" y="333" text-anchor="end">38%</text>
+    <text x="1056" y="333" text-anchor="end">42%</text>
+
+    <text x="680" y="367">14</text>
+    <text x="724" y="367">npm run start</text>
+    <text x="984" y="367" text-anchor="end">12%</text>
+    <text x="1056" y="367" text-anchor="end">20%</text>
+
+    <text x="680" y="401">41</text>
+    <text x="724" y="401">sh -c healthcheck</text>
+    <text x="984" y="401" text-anchor="end">3%</text>
+    <text x="1056" y="401" text-anchor="end">6%</text>
+
+    <text x="680" y="435">52</text>
+    <text x="724" y="435">sleep 30</text>
+    <text x="984" y="435" text-anchor="end">0%</text>
+    <text x="1056" y="435" text-anchor="end">1%</text>
+  </g>
 </svg>

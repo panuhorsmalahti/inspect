@@ -2,6 +2,14 @@
 
 What changed in each version of this extension, newest first.
 
+## 0.1.2
+
+- Gave the extension an icon and a banner of its own: a magnifying glass over a pod, and the pods of a cluster with one expanded to its containers and processes.
+
+## 0.1.1
+
+- Published the extension's code, which the 0.1.0 package left out.
+
 ## 0.1.0
 
 - Created the extension.
