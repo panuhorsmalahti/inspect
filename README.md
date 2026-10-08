@@ -2,6 +2,10 @@
 
 See every pod of a cluster at a glance, as a wall of boxes, and zoom into any one of them to see its containers and the processes running in them.
 
+## Install
+
+[Open Inspect Pods in Lens](https://app.k8slens.dev/lens-launcher?c=lens%3A%2F%2Fapp%2Fopen%2Fextension%3Fname%3Dlens-extension-inspect), or find it in Lens under **Extensions > Browse Marketplace**.
+
 ## Features
 
 - **Inspect Pods** in the navigator, under every cluster.
